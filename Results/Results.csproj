@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ProSoft.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <AssemblyName>ProSoft.$(MSBuildProjectName)</AssemblyName>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Title>ProSoft.Results</Title>
+    <Company>Provident Software</Company>
+    <Copyright>Provident Software</Copyright>
+    <RepositoryUrl>https://github.com/Mirco-Kaffsach/ProSoft.Results</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ProSoft; Result Pattern</PackageTags>
+  </PropertyGroup>
+
+</Project>
