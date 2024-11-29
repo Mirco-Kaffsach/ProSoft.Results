@@ -3,4 +3,7 @@
 /// <summary>
 /// Class MessageItem.
 /// </summary>
-public record MessageItem(MessageType Type, string Message);
+/// <param name="Type">The type.</param>
+/// <param name="RelevantField">The relevant field.</param>
+/// <param name="Message">The message.</param>
+public record MessageItem(MessageType Type,string RelevantField, string Message);
