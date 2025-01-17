@@ -26,6 +26,38 @@ public class Result<TValue> : IDisposable
    /// <value>The messages.</value>
    public HashSet<MessageItem> Messages { get; set; } = [];
 
+   /// <summary>
+   /// Initializes a new instance of the <see cref="Result{TValue}"/> class.
+   /// </summary>
+   public Result()
+   {
+
+   }
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="Result{TValue}"/> class.
+   /// </summary>
+   /// <param name="value">The value.</param>
+   /// <param name="resultType">Type of the result.</param>
+   public Result(TValue? value, ResultType resultType)
+   {
+      Value = value;
+      Type = resultType;
+   }
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="Result{TValue}"/> class.
+   /// </summary>
+   /// <param name="value">The value.</param>
+   /// <param name="resultType">Type of the result.</param>
+   /// <param name="messages">The messages.</param>
+   public Result(TValue? value, ResultType resultType, HashSet<MessageItem> messages)
+   {
+      Value = value;
+      Type = resultType;
+      Messages = messages;
+   }
+
    #region IDisposable Interface Implementation
 
    private bool _disposed;
