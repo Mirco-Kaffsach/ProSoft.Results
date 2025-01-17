@@ -17,6 +17,18 @@ public class PagedResult<TValue> : IDisposable
    public List<TValue> ResultList { get; set; }
 
    /// <summary>
+   /// Gets or sets the type.
+   /// </summary>
+   /// <value>The type.</value>
+   public ResultType Type { get; set; }
+
+   /// <summary>
+   /// Gets or sets the messages.
+   /// </summary>
+   /// <value>The messages.</value>
+   public HashSet<MessageItem> Messages { get; set; } = [];
+
+   /// <summary>
    /// Gets the size of the page.
    /// </summary>
    /// <value>The size of the page.</value>
@@ -43,6 +55,18 @@ public class PagedResult<TValue> : IDisposable
    /// <summary>
    /// Initializes a new instance of the <see cref="PagedResult{TValue}"/> class.
    /// </summary>
+   public PagedResult()
+   {
+      ResultList = [];
+      PageSize = 10;
+      PageCount = 1;
+      CurrentPage = 1;
+      TotalCount = 0;
+   }
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="PagedResult{TValue}"/> class.
+   /// </summary>
    /// <param name="resultList">The result list.</param>
    /// <param name="pageSize">Size of the page.</param>
    /// <param name="currentPage">The current page.</param>
@@ -51,7 +75,7 @@ public class PagedResult<TValue> : IDisposable
       PageSize = pageSize;
       TotalCount = resultList.LongCount();
 
-      double totalPages = (double)TotalCount / (double)pageSize;
+      double totalPages = TotalCount / (double)pageSize;
       if (totalPages % 1 != 0)
       {
          totalPages = Math.Ceiling(totalPages);
@@ -67,6 +91,35 @@ public class PagedResult<TValue> : IDisposable
 
       CurrentPage = currentPage;
       ResultList = resultList.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+   }
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="PagedResult{TValue}"/> class.
+   /// </summary>
+   /// <param name="resultList">The result list.</param>
+   /// <param name="pageSize">Size of the page.</param>
+   /// <param name="currentPage">The current page.</param>
+   /// <param name="resultType">Type of the result.</param>
+   public PagedResult(IQueryable<TValue> resultList, int pageSize, int currentPage, ResultType resultType)
+      : this(resultList, pageSize, currentPage)
+   {
+      Type = resultType;
+   }
+
+
+   /// <summary>
+   /// Initializes a new instance of the <see cref="PagedResult{TValue}"/> class.
+   /// </summary>
+   /// <param name="resultList">The result list.</param>
+   /// <param name="pageSize">Size of the page.</param>
+   /// <param name="currentPage">The current page.</param>
+   /// <param name="resultType">Type of the result.</param>
+   /// <param name="messages">The messages.</param>
+   public PagedResult(IQueryable<TValue> resultList, int pageSize, int currentPage, ResultType resultType, HashSet<MessageItem> messages) 
+      : this(resultList, pageSize, currentPage)
+   {
+      Type = resultType;
+      Messages = messages;
    }
 
    #region IDisposable Interface Implementation
