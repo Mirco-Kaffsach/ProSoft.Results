@@ -46,13 +46,50 @@ public sealed class ApiPagedResult<TValue> : PagedResult<TValue>
     /// <summary>
     /// Initializes a new instance of the <see cref="ApiPagedResult{TValue}"/> class.
     /// </summary>
+    public ApiPagedResult()
+    {
+
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiPagedResult{TValue}"/> class.
+    /// </summary>
     /// <param name="resultList">The result list.</param>
     /// <param name="pageSize">Size of the page.</param>
     /// <param name="currentPage">The current page.</param>
-    public ApiPagedResult(IQueryable<TValue> resultList, int pageSize, int currentPage) 
+    public ApiPagedResult(HttpStatusCode statusCode, IQueryable<TValue> resultList, int pageSize, int currentPage) 
         : base(resultList, pageSize, currentPage)
     {
+        StatusCode = statusCode;
+    }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiPagedResult{TValue}"/> class.
+    /// </summary>
+    /// <param name="statusCode">The status code.</param>
+    /// <param name="resultList">The result list.</param>
+    /// <param name="pageSize">Size of the page.</param>
+    /// <param name="currentPage">The current page.</param>
+    /// <param name="resultType">Type of the result.</param>
+    public ApiPagedResult(HttpStatusCode statusCode, IQueryable<TValue> resultList, int pageSize, int currentPage, ResultType resultType)
+        : base(resultList, pageSize, currentPage, resultType)
+    {
+        StatusCode = statusCode;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiPagedResult{TValue}"/> class.
+    /// </summary>
+    /// <param name="statusCode">The status code.</param>
+    /// <param name="resultList">The result list.</param>
+    /// <param name="pageSize">Size of the page.</param>
+    /// <param name="currentPage">The current page.</param>
+    /// <param name="resultType">Type of the result.</param>
+    /// <param name="messages">The messages.</param>
+    public ApiPagedResult(HttpStatusCode statusCode, IQueryable<TValue> resultList, int pageSize, int currentPage, ResultType resultType, HashSet<MessageItem> messages)
+        : base(resultList, pageSize, currentPage, resultType, messages)
+    {
+        StatusCode = statusCode;
     }
 
     #region IDisposable Interface Implementation
