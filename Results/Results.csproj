@@ -4,9 +4,9 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.3.0</Version>
-    <RootNamespace>ProSoft.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-    <AssemblyName>ProSoft.$(MSBuildProjectName)</AssemblyName>
+    <Version>1.4.0</Version>
+    <RootNamespace>ProSoft.Results</RootNamespace>
+    <AssemblyName>ProSoft.Results</AssemblyName>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Title>ProSoft.Results</Title>
     <Company>Provident Software</Company>
